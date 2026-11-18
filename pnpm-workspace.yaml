@@ -10,7 +10,7 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - jsdom@30.0.0
   - '@aws-sdk/checksums@3.1000.21 || 3.1000.23 || 3.1000.24'
-  - '@aws-sdk/client-s3@3.1096.0 || 3.1098.0 || 3.1099.0 || 3.1100.0 || 3.1112.0 || 3.1140.0'
+  - '@aws-sdk/client-s3@3.1096.0 || 3.1098.0 || 3.1099.0 || 3.1100.0 || 3.1112.0 || 3.1140.0 || 3.1171.0'
   - '@aws-sdk/credential-provider-env@3.972.62 || 3.972.64 || 3.972.65'
   - '@aws-sdk/credential-provider-http@3.972.64 || 3.972.66 || 3.972.67'
   - '@aws-sdk/credential-provider-ini@3.973.7 || 3.973.9 || 3.973.10'
@@ -36,10 +36,25 @@ minimumReleaseAgeExclude:
   - '@smithy/fetch-http-handler@5.6.13'
   - '@smithy/node-http-handler@4.9.13'
   - '@smithy/signature-v4@5.6.12'
-  - lucide-react@1.28.0
+  - lucide-react@1.28.0 || 1.75.0
   - '@types/react-dom@19.2.4'
   - '@types/react@19.2.18'
   - framer-motion@13.4.3 || 13.4.4
   - motion@13.4.3 || 13.4.4
   - dotenv@18.0.4
   - motion-dom@13.4.4
+  - '@payloadcms/db-postgres@3.94.0'
+  - '@payloadcms/drizzle@3.94.0'
+  - '@payloadcms/email-resend@3.94.0'
+  - '@payloadcms/graphql@3.94.0'
+  - '@payloadcms/live-preview-react@3.94.0'
+  - '@payloadcms/live-preview@3.94.0'
+  - '@payloadcms/next@3.94.0'
+  - '@payloadcms/plugin-cloud-storage@3.94.0'
+  - '@payloadcms/plugin-redirects@3.94.0'
+  - '@payloadcms/plugin-seo@3.94.0'
+  - '@payloadcms/richtext-lexical@3.94.0'
+  - '@payloadcms/storage-s3@3.94.0'
+  - '@payloadcms/translations@3.94.0'
+  - '@payloadcms/ui@3.94.0'
+  - payload@3.94.0

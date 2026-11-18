@@ -47,14 +47,30 @@ starting from scratch — auth, CMS, storage, and UI conventions are already wir
    | `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_ACCESS_KEY_SECRET`, `S3_REGION`, `S3_ENDPOINT` | Media storage (S3-compatible) |
    | `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME` | Transactional email |
 
-3. Start the dev server:
+3. Apply the database schema:
+
+   ```bash
+   pnpm payload migrate
+   ```
+
+   The Postgres adapter runs with `push: false` (`src/payload.config.ts`), so tables are
+   created only by migrations. Skip this on a fresh database and every query fails with
+   `relation "pages" does not exist` (Postgres `42P01`), which appears during
+   `pnpm build` as `Failed to collect page data for /[slug]`. The command is safe to
+   re-run: applied migrations are tracked in `payload_migrations`.
+
+4. Start the dev server:
 
    ```bash
    pnpm dev
    ```
 
-4. Open `http://localhost:3000`. Follow the on-screen instructions to log in via
-   Clerk and complete first-run setup.
+5. Open `http://localhost:3000/admin`. There is no local first-user screen: the Users
+   collection disables the local strategy and authenticates through Clerk. Create your
+   user in Clerk, set its public metadata to `{ "role": "admin" }`, then sign in at
+   `/admin`. The default role is `user`, which cannot enter the admin panel; the Clerk
+   login strategy (or the `user.created` webhook, when reachable) creates the matching
+   Payload record with the role from that metadata.
 
 ### Local PostgreSQL (optional)
 
@@ -93,6 +109,22 @@ global, or field config:
 CI applies migrations before building the image
 (`.github/workflows/push-to-ghcr.yml`), and the build prerenders routes against the
 database, so migrations must be committed before the workflow runs.
+
+### First run and empty databases
+
+Run `pnpm payload migrate` once before the first `pnpm dev` or `pnpm build`, and again
+after recreating the database or switching `DATABASE_URL` to a database that has not
+been migrated. Verify with `pnpm payload migrate:status` (the initial migration is
+`20260925_210034`).
+
+If a table appears to be missing, confirm you migrated the database you are actually
+connected to, not just one in Docker or on another port.
+
+Symptoms of an unmigrated database:
+
+- `error: relation "pages" does not exist` (`code: '42P01'`)
+- `Failed to collect page data for /[slug]` during `pnpm build`
+- `relation "payload_migrations" does not exist` from `migrate:status`
 
 ## Available Scripts
 
