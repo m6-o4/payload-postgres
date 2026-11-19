@@ -1,23 +1,22 @@
 # [1.1.0](https://github.com/m6-o4/payload-template-pg/compare/v1.0.0...v1.1.0) (2026-09-25)
 
-
 ### Features
 
-* **db:** add initial Postgres migration and disable schema push ([6bb692b](https://github.com/m6-o4/payload-template-pg/commit/6bb692b14c1e6dcbd0f616524ee4a527ef07b38f))
+- **db:** add initial Postgres migration and disable schema push
+  ([6bb692b](https://github.com/m6-o4/payload-template-pg/commit/6bb692b14c1e6dcbd0f616524ee4a527ef07b38f))
 
 # 1.0.0 (2026-09-25)
 
-
 ### Code Refactoring
 
-* **db:** migrate from MongoDB to Postgres adapter ([608f9fc](https://github.com/m6-o4/payload-template-pg/commit/608f9fc53b2d8532e90a556ec735cba65d391eb6))
-
+- **db:** migrate from MongoDB to Postgres adapter
+  ([608f9fc](https://github.com/m6-o4/payload-template-pg/commit/608f9fc53b2d8532e90a556ec735cba65d391eb6))
 
 ### BREAKING CHANGES
 
-* **db:** The database backend changes from MongoDB to Postgres.
-Document IDs are now numeric instead of string, requiring a data migration
-and updates to any code that relies on string IDs.
+- **db:** The database backend changes from MongoDB to Postgres. Document IDs are now
+  numeric instead of string, requiring a data migration and updates to any code that
+  relies on string IDs.
 
 # [2.1.0](https://github.com/m6-o4/payload-template/compare/v2.0.1...v2.1.0) (2026-08-10)
 
